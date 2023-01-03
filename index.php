@@ -106,7 +106,7 @@ cdr.a_maxjitter as 'caller jitter',
 cdr.b_maxjitter as 'called jitter',
 cdr.a_mos_min_mult10/10 as 'mos caller side',
 cdr.b_mos_min_mult10/10 as 'mos called side',
-concat('<a href=\"',cdr.ID'\">pcap</>') as pcapS
+concat('<a href=\"',cdr.ID,'\">pcap</>') as pcapS
 FROM cdr INNER JOIN cdr_next ON cdr.ID = cdr_next.cdr_ID WHERE 1
 ORDER BY cdr.calldate DESC LIMIT 1000";
 $result = mysqli_query($locallink,$query);
