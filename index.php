@@ -44,7 +44,7 @@ if ($export == 'html') {
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<meta http-equiv="refresh" content="<?echo $refresh;?>">
-	<title>Arrowleaf voipmon</title>	
+	<title>Voipmon</title>	
 	<link rel="icon" type="image/png" href="./favicon.ico">
 	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://www.datatables.net/rss.xml">
     <link rel="stylesheet" type="text/css" href="./style.css">
@@ -85,9 +85,8 @@ if ($export == 'html') {
 </head>
 
 <body>
-<img src='watchdog.gif' alt='A dog running back and forth, occasionally with the text watchdog displayed in red'S>
 <div id="chartwrap">
-<H1>Arrowleaf voipmon cdr</H1>
+<H1>Voipmon cdr</H1>
 <div id="localheader"></div>
 
 <div id="chartwrap">
@@ -108,7 +107,7 @@ cdr.b_maxjitter as 'called jitter',
 cdr.a_mos_min_mult10/10 as 'mos caller side',
 cdr.b_mos_min_mult10/10 as 'mos called side',
 concat('<a href=\"http://fsaza-1147531985.phl.coredial.com/cgi-bin/get_pcap.cgi?to=',cdr.called,'&from=',cdr.caller,'&file=',LEFT(cdr.calldate, 10),'/',RIGHT(LEFT(cdr.calldate, 13),2),'/',RIGHT(LEFT(cdr.calldate, 16),2),'/SIP/',cdr_next.fbasename,'.pcap\">pcap</>') as pcap
-FROM cdr INNER JOIN cdr_next ON cdr.ID = cdr_next.cdr_ID WHERE $filter 
+FROM cdr INNER JOIN cdr_next ON cdr.ID = cdr_next.cdr_ID WHERE 1
 ORDER BY cdr.calldate DESC LIMIT 1000";
 $result = mysqli_query($locallink,$query);
 
