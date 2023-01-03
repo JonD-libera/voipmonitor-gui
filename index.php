@@ -106,11 +106,11 @@ cdr.a_maxjitter as 'caller jitter',
 cdr.b_maxjitter as 'called jitter',
 cdr.a_mos_min_mult10/10 as 'mos caller side',
 cdr.b_mos_min_mult10/10 as 'mos called side',
-concat('<a href=\"http://fsaza-1147531985.phl.coredial.com/cgi-bin/get_pcap.cgi?to=',cdr.called,'&from=',cdr.caller,'&file=',LEFT(cdr.calldate, 10),'/',RIGHT(LEFT(cdr.calldate, 13),2),'/',RIGHT(LEFT(cdr.calldate, 16),2),'/SIP/',cdr_next.fbasename,'.pcap\">pcap</>') as pcap
+concat('<a href=\"',cdr.ID'\">pcap</>') as pcapS
 FROM cdr INNER JOIN cdr_next ON cdr.ID = cdr_next.cdr_ID WHERE 1
 ORDER BY cdr.calldate DESC LIMIT 1000";
 $result = mysqli_query($locallink,$query);
-
+//',LEFT(cdr.calldate, 10),'/',RIGHT(LEFT(cdr.calldate, 13),2),'/',RIGHT(LEFT(cdr.calldate, 16),2),'/SIP/',cdr_next.fbasename,'.pcap
 $all_property = array();  //declare an array for saving property
 //showing property
 if ($export == 'html') {
